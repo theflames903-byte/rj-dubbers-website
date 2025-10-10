@@ -1,0 +1,678 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --bg-color: #0a0a0a;
+    --card-color: #1a1a2e;
+    --primary-highlight: #00a8ff;
+    --secondary-highlight: #4cc9f0;
+    --text-color: #e0e0e0;
+    --text-muted: #a0a0a0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    color: var(--secondary-highlight);
+    font-weight: 600;
+}
+
+section {
+    padding: 80px 10%;
+}
+
+/* --- Scroll Animation --- */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr; /* Left, Center, Right columns */
+    align-items: center;
+    padding: 25px 5%;
+    background-color: transparent;
+    z-index: 1000;
+    transition: background-color 0.3s ease, padding 0.3s ease;
+}
+.logo-container {
+    grid-column: 2 / 3;
+    justify-self: center;
+}
+
+.site-header.scrolled {
+    background-color: var(--card-color);
+    padding: 15px 5%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.site-header .site-title {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 700;
+    color: #fff;
+}
+
+.main-nav {
+    grid-column: 3 / 4;
+    justify-self: end;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav ul {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-nav li {
+    margin-left: 30px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--primary-highlight);
+}
+
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+    grid-column: 1 / 2;
+    justify-self: start;
+}
+
+.hamburger-line {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-color);
+    margin: 5px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* --- Main Content --- */
+main {
+    padding-top: 75px; /* Offset for fixed header */
+}
+
+/* --- Hero Banner Section --- */
+#home {
+    height: calc(100vh - 75px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(26, 26, 46, 0.8)), url('images/hero-banner.jpg') no-repeat center center/cover; /* Make sure this image file exists! */
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin: 0 0 15px 0;
+    line-height: 1.1;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- Introduction Section --- */
+#about {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Seasons Section --- */
+.seasons-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.season-card {
+    background-color: var(--card-color);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #2a2a3e;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative; /* Needed for absolute positioning of child elements */
+}
+
+.free-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: var(--primary-highlight);
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 10;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.coming-soon-tag {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #555;
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    z-index: 10;
+}
+
+.season-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 168, 255, 0.2);
+}
+
+.season-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.season-card-content {
+    padding: 25px;
+}
+
+.season-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.season-card p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.watch-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--primary-highlight);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.watch-button:hover {
+    background-color: var(--secondary-highlight);
+}
+
+.watch-button.disabled {
+    background-color: #444;
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.watch-button.disabled:hover {
+    background-color: #444;
+}
+
+/* --- Voice Actors Section --- */
+.actors-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    justify-content: center;
+}
+
+.actor-card {
+    background-color: var(--card-color);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #2a2a3e;
+}
+
+.actor-card h4 {
+    margin: 0 0 5px 0;
+    font-size: 1.2rem;
+}
+
+.actor-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- Contact Section --- */
+.contact-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-content p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Allows buttons to stack on small screens */
+}
+/* --- Footer --- */
+.site-footer {
+    background-color: var(--card-color);
+    text-align: center;
+    padding: 25px 5%;
+    margin-top: 60px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.player-info-panel {
+    /* Hide the episode list panel by default on mobile */
+    display: none;
+}
+
+/* --- Player Page Styles --- */
+.player-page-body {
+    padding-top: 75px; /* Offset for fixed header */
+}
+
+.player-main {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.player-video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    background-color: #000;
+    overflow: hidden; /* Ensures video corners are rounded */
+}
+
+#player-video-element {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.player-details-under-video {
+    margin-top: 30px;
+}
+
+.season-details-wrapper {
+    margin-top: 30px;
+    border-top: 1px solid #2a2a3e;
+    padding-top: 25px;
+}
+
+.player-details-under-video h2 {
+    font-size: 2.5rem;
+}
+
+.player-vas {
+    margin-top: 30px;
+}
+
+.player-vas h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.player-vas ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--text-muted);
+}
+
+.player-vas li {
+    padding: 5px 0;
+}
+
+.episodes-panel-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2a3e;
+}
+
+.episode-section {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#episode-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 65vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-highlight) #1f1f3d;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 30px, black calc(100% - 30px), transparent 100%);
+}
+
+/* Custom Scrollbar for Webkit browsers */
+#episode-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+#episode-list::-webkit-scrollbar-track {
+  background: #1f1f3d;
+}
+
+#episode-list::-webkit-scrollbar-thumb {
+  background-color: var(--primary-highlight);
+  border-radius: 10px;
+  border: 2px solid #1f1f3d;
+}
+
+#episode-list li {
+    background-color: #1f1f3d;
+    padding: 12px 20px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-left-color 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-left: 4px solid transparent;
+}
+
+#episode-list li:hover {
+    background-color: #2a2a4e;
+}
+
+#episode-list li.playing {
+    background-color: #2a2a4e;
+    color: #fff;
+    border-left-color: var(--primary-highlight);
+}
+
+.episode-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    flex-shrink: 0;
+}
+
+.episode-download-btn {
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.episode-download-btn:hover {
+    background-color: var(--primary-highlight);
+    color: #fff;
+}
+
+.episode-download-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.episode-title {
+    font-size: 1rem;
+}
+
+.episode-info-wrapper {
+    display: flex;
+    align-items: center;
+    /* This makes the clickable area larger without affecting the download button */
+    flex-grow: 1;
+    min-width: 0; /* Fix for flexbox overflow */
+}
+
+.watched-indicator {
+    display: none; /* Hidden by default */
+    color: var(--primary-highlight);
+    margin-right: 10px;
+    flex-shrink: 0; /* Prevent it from shrinking */
+    line-height: 0; /* Align SVG properly */
+    cursor: pointer;
+}
+
+.watched-indicator svg {
+    width: 18px;
+    height: 18px;
+}
+
+#episode-list li.watched .watched-indicator {
+    display: inline-block; /* Show the indicator */
+}
+
+#episode-list li.watched .episode-title {
+    opacity: 0.7;
+}
+
+/* --- Download Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-color);
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 100%;
+    position: relative;
+    border: 1px solid #2a2a3e;
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--primary-highlight);
+}
+
+#download-modal-title {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+#download-options-list a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #1f1f3d;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.3s ease;
+}
+
+#download-options-list a:hover {
+    background-color: var(--primary-highlight);
+}
+
+#download-options-list .quality-label {
+    font-weight: 600;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.is-active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .hamburger.is-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .hamburger.is-active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 280px;
+        background-color: var(--card-color);
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+        /* Reset desktop grid/flex styles for mobile panel */
+        display: block;
+        grid-column: initial;
+        justify-self: initial;
+    }
+
+    .main-nav.nav-active {
+        transform: translateX(0);
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+        width: 100%;
+    }
+
+    .main-nav li { margin: 20px 0; margin-left: 0; }
+
+
+}
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .site-header .site-title {
+        font-size: 1.1rem;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header .site-title {
+        font-size: 1rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Two-column layout for player on larger screens */
+@media (min-width: 992px) {
+    .player-layout {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start; /* Aligns items to the top, removing extra space */
+    }
+    .player-left-column {
+        flex: 2; /* Takes up 2/3 of the space */
+        display: flex;
+        flex-direction: column;
+        order: 1; /* Place it on the left */
+        min-width: 0; /* Prevents this column from overflowing and pushing the other one out */
+    }
+    .player-info-panel {
+        flex: 1; /* Takes up 1/3 of the space */
+        position: sticky;
+        top: 115px; /* Header offset (75px) + main padding (40px) */
+        order: 2; /* Place it on the right */
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Season | RJ Dubbers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="player-page-body">
+
+    <header class="site-header scrolled"> <!-- Always scrolled style -->
+        <div class="logo-container">
+            <a href="/index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <h1 class="site-title">RJ Dubbers</h1>
+            </a>
+        </div>
+    </header>
+
+    <main class="player-main">
+        <div class="player-layout">
+            <!-- Video Player Column -->
+            <div class="player-left-column">
+                <div class="player-video-wrapper">
+                    <video id="player-video-element" controls playsinline autoplay disablepictureinpicture></video>
+                </div>
+                <!-- Details are now under the video -->
+                <div class="player-details-under-video">
+                    <h2 id="player-title">Loading...</h2>
+                    <!-- Episode description will be inserted here by JS -->
+
+                    <!-- Season details will be here -->
+                    <div class="season-details-wrapper">
+                        <p id="player-description"></p>
+                        <div class="player-vas"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Episodes Column -->
+            <div class="player-info-panel">
+                <div class="episode-section">
+                    <h3 class="episodes-panel-title">Episodes</h3>
+                    <ul id="episode-list"></ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 RJ Dubbers. All rights reserved. 'Battle Through the Heavens' is the property of its respective owners.</p>
+    </footer>
+
+    <!-- Download Modal -->
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal id="download-modal-close-button" aria-label="Close modal">&times;</button>
+            <h3 id="download-modal-title">Download Episode</h3>
+            <div id="download-options-list">
+                <!-- Download options will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="player.js"></script>
+</body>
+</html>
