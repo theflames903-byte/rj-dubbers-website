@@ -4,15 +4,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     let currentContent; // The specific season or special object
 
     // --- Configuration ---
-    // IMPORTANT: Replace 'your-public-bucket-name' with your actual Google Cloud Storage bucket name.
-    const GCS_BUCKET_NAME = 'rj-dubbers-videos93';
-
     // --- Get elements from the DOM ---
     const videoElement = document.getElementById('player-video-element');
     const titleElement = document.getElementById('player-title');
     const descriptionElement = document.getElementById('player-description');
     const episodeListElement = document.getElementById('episode-list');
     const pageTitle = document.querySelector('title');
+    const videoOverlay = document.getElementById('video-overlay');
+    const nextEpisodeButton = document.getElementById('next-episode-button');
 
     const downloadModal = document.getElementById('download-modal');
     const downloadOptionsList = document.getElementById('download-options-list');
@@ -26,15 +25,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             ]);
 
             // Check if fetches were successful before parsing JSON
-            const seasonsData = seasonsResult.ok ? await seasonsResult.json() : null;
-            const specialsData = specialsResult.ok ? await specialsResult.json() : null;
+            const seasonsJson = seasonsResult.ok ? await seasonsResult.json() : null;
+            const specialsJson = specialsResult.ok ? await specialsResult.json() : null;
 
             if (!seasonsResult.ok) console.warn('Failed to fetch seasons.json');
             if (!specialsResult.ok) console.warn('Failed to fetch specials.json');
 
             return { 
-                seasonsData: seasonsResult, 
-                specialsData: specialsResult, 
+                seasonsData: seasonsJson,
+                specialsData: specialsJson,
                 error: null 
             };
         } catch (error) {
@@ -121,18 +120,28 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Populate VAs
         const vaContainer = document.querySelector('.player-vas');
         if (vaContainer && currentContent.data.vas) {
+            vaContainer.innerHTML = ''; // Clear previous content
             const vas = currentContent.data.vas.split(',');
-            const vaListHTML = vas.map(va => {
+            const vaList = document.createElement('ul');
+            vaList.id = 'player-va-list';
+            let hasVAs = false;
+
+            vas.forEach(va => {
                 const parts = va.split(':');
-                if (parts.length < 2) return '';
+                if (parts.length < 2) return;
                 const character = parts[0].trim();
                 const actor = parts[1].trim();
-                return `<li><strong>${character}:</strong> ${actor}</li>`;
-            }).join('');
+                const li = document.createElement('li');
+                li.innerHTML = `<strong>${character}:</strong> ${actor}`; // Safe, as we control the structure
+                vaList.appendChild(li);
+                hasVAs = true;
+            });
 
-            vaContainer.innerHTML = vaListHTML
-                ? `<h3>Key Voice Actors</h3><ul id="player-va-list">${vaListHTML}</ul>`
-                : '';
+            if (hasVAs) {
+                const h3 = document.createElement('h3');
+                h3.textContent = 'Key Voice Actors';
+                vaContainer.append(h3, vaList);
+            }
         }
 
         // Populate Episodes
@@ -178,6 +187,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
+        // Hide the "Next Episode" overlay whenever a new episode starts
+        videoOverlay.classList.remove('visible');
+
         // Update video player source
         videoElement.src = episodeData.src;
         videoElement.load();
@@ -215,18 +227,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 
-    videoElement.addEventListener('ended', () => {
+    function playNextEpisode() {
         const currentPlaying = document.querySelector('#episode-list li.playing');
-        if (currentPlaying) {
-            const nextEpisodeElement = currentPlaying.nextElementSibling;
-            if (nextEpisodeElement && nextEpisodeElement.dataset.index) {
-                const nextIndex = parseInt(nextEpisodeElement.dataset.index, 10);
-                if (!isNaN(nextIndex) && currentContent.data.episodes[nextIndex]) {
-                    playEpisode(nextEpisodeElement, nextIndex);
-                }
+        if (!currentPlaying) return;
+
+        const nextEpisodeElement = currentPlaying.nextElementSibling;
+        if (nextEpisodeElement && nextEpisodeElement.dataset.index) {
+            const nextIndex = parseInt(nextEpisodeElement.dataset.index, 10);
+            if (!isNaN(nextIndex) && currentContent.data.episodes[nextIndex]) {
+                playEpisode(nextEpisodeElement, nextIndex);
             }
         }
+    }
+
+    videoElement.addEventListener('ended', () => {
+        const currentPlaying = document.querySelector('#episode-list li.playing');
+        const nextEpisodeElement = currentPlaying ? currentPlaying.nextElementSibling : null;
+
+        // If there is a next episode, show the button. Otherwise, do nothing.
+        if (nextEpisodeElement && nextEpisodeElement.dataset.index) {
+            videoOverlay.classList.add('visible');
+        }
     });
+
+    // Add click listener for the new button
+    nextEpisodeButton.addEventListener('click', playNextEpisode);
 
     // --- Modal Management ---
     function showModal(id) {

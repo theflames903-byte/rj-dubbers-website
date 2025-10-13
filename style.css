@@ -356,6 +356,30 @@ main {
     overflow: hidden; /* Ensures video corners are rounded */
 }
 
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+    z-index: 50; /* Above video, below custom controls if any */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-overlay.visible {
+    display: flex;
+    opacity: 1;
+}
+
+#next-episode-button {
+    font-size: 1.2rem;
+    padding: 15px 40px;
+}
 #player-video-element {
     width: 100%;
     height: auto;
