@@ -1,0 +1,26 @@
+{
+  "1": {
+    "title": "Song of Desert",
+    "description": "A special movie focusing on the adventures in the desert and the relationship between Xiao Yan and Queen Medusa.",
+    "vas": "Xiao Yan:Rohan Sharma,Queen Medusa:Anjali Mehta",
+    "episodes": [
+      {
+        "title": "Song of Desert - Movie",
+        "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Song%20of%20Desert.mp4",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Song%20of%20Desert.mp4" }]
+      }
+    ]
+  },
+  "2": {
+    "title": "Yun Yun Special",
+    "description": "A special movie detailing the story and relationship between Xiao Yan and Yun Yun, the leader of the Misty Cloud Sect.",
+    "vas": "Xiao Yan:Rohan Sharma,Yun Yun:Priya Singh",
+    "episodes": [
+      {
+        "title": "Yun Yun Special - Movie",
+        "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Yun%20Yun%20Special.mp4",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Yun%20Yun%20Special.mp4" }]
+      }
+    ]
+  }
+}
