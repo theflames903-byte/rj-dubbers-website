@@ -327,6 +327,11 @@ main {
     gap: 20px;
     flex-wrap: wrap; /* Allows buttons to stack on small screens */
 }
+
+.contact-buttons p {
+    width: 100%; /* Make the paragraph take full width to appear above the button */
+    margin-bottom: 10px;
+}
 /* --- Footer --- */
 .site-footer {
     background-color: var(--card-color);
