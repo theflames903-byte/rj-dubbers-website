@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 specialsData = data.specialsData;
             }
-            contentData = specialsData.find(s => s.id == contentId);
+            contentData = specialsData?.find(s => s.id == contentId);
         } else {
             contentData = await fetchContentData(contentType, contentId);
         }
@@ -292,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentContent = { id: contentId, isSpecial: isSpecial, data: contentData };
         updateUI();
+
         if (loader) loader.style.display = 'none';
     }
 
