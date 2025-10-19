@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateContentDetails();
 
         if (currentContent.data.episodes && currentContent.data.episodes.length > 0) {
-            updateEpisodeDescription(0);
+            updateEpisodeDescription(0); // Set description for the first episode on load
         }
 
         populateEpisodeList();
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 specialsData = data.specialsData;
             }
-            contentData = specialsData[contentId];
+            contentData = specialsData.find(s => s.id == contentId);
         } else {
             contentData = await fetchContentData(contentType, contentId);
         }
@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         currentContent = { id: contentId, isSpecial: isSpecial, data: contentData };
         updateUI();
-        loader.classList.add('hidden');
+        if (loader) loader.style.display = 'none';
     }
 
     function handleContentNotFound(customMessage = "") {

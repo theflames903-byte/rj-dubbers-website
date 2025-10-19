@@ -860,6 +860,11 @@ main#main-content, .player-container-main {
     .episode-actions {
         width: 100%;
         margin-top: 10px;
+        margin-left: 0; /* Reset margin from desktop view */
+    }
+
+    .episode-actions .watch-button {
+        width: 100%; /* Make button full-width */
     }
 }
 
