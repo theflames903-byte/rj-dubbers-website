@@ -839,6 +839,12 @@ main#main-content, .player-container-main {
         width: 100%; /* Make button full-width */
     }
 }
+@media (max-width: 480px) {
+    #episode-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
 
 /* Two-column layout for player on larger screens */
 @media (min-width: 992px) {
