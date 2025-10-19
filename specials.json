@@ -2,24 +2,56 @@
   "1": {
     "title": "Song of Desert",
     "description": "A special movie focusing on the adventures in the desert and the relationship between Xiao Yan and Queen Medusa.",
-    "vas": "Xiao Yan:Rohan Sharma,Queen Medusa:Anjali Mehta",
+    "vas": "Xiao Yan:RJ,Queen Medusa:Billy",
+    "globalRating": 4.6,
     "episodes": [
       {
-        "title": "Song of Desert - Movie",
-        "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Song%20of%20Desert.mp4",
-        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Song%20of%20Desert.mp4" }]
+        "title": "Song of Desert - Part 1",
+        "description": "The beginning of the adventure in the Tager Desert, where Xiao Yan first encounters the formidable snake-people tribe and their queen.",
+        "src": "4e56d7dd-bfb9-4564-b857-04654e9296fc", 
+        "libraryId": "1209873",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://rj-dubber.b-cdn.net/special-1/special-1_part-1_song-of-desert.mp4" }],
+        "rating": 4.6
+      },
+      {
+        "title": "Song of Desert - Part 2",
+        "description": "The story continues as the bond and conflict between the characters deepen amidst the harsh desert landscape.",
+        "src": "832e0a84-c0d0-4f7e-8e9c-00753a0afdda", 
+        "libraryId": "1209873",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://rj-dubber.b-cdn.net/special-1/special-1_part-2_song-of-desert.mp4" }],
+        "rating": 4.7
+      },
+      {
+        "title": "Song of Desert - Part 3",
+        "description": "A pivotal moment in the desert saga, leading to a dramatic confrontation and revelation.",
+        "src": "ec65630b-bfca-42a2-9fbc-794b546362af", 
+        "libraryId": "1209873",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://rj-dubber.b-cdn.net/special-1/special-1_part-3_song-of-desert.mp4" }],
+        "rating": 4.8
       }
     ]
   },
   "2": {
     "title": "Yun Yun Special",
     "description": "A special movie detailing the story and relationship between Xiao Yan and Yun Yun, the leader of the Misty Cloud Sect.",
-    "vas": "Xiao Yan:Rohan Sharma,Yun Yun:Priya Singh",
+    "vas": "Xiao Yan:RJ,Yun Yun:Sweety",
+    "globalRating": 4.8,
     "episodes": [
       {
-        "title": "Yun Yun Special - Movie",
-        "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Yun%20Yun%20Special.mp4",
-        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://storage.googleapis.com/rj-dubbers-videos93/BTTH/Specials/Yun%20Yun%20Special.mp4" }]
+        "title": "Yun Yun Special - Part 1",
+        "description": "Exploring the initial encounters and developing relationship between Xiao Yan and Yun Yun.",
+        "src": "YOUR_BUNNY_VIDEO_GUID_4", 
+        "libraryId": "1209873",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://rj-dubber.b-cdn.net/special-2/special-echoes-of-the-misty-cloud_part-1.mp4" }],
+        "rating": 4.8
+      },
+      {
+        "title": "Yun Yun Special - Part 2",
+        "description": "The relationship faces new challenges and heartfelt moments as their paths intertwine.",
+        "src": "YOUR_BUNNY_VIDEO_GUID_5", 
+        "libraryId": "1209873",
+        "downloadSources": [{ "quality": "1080p", "size": "N/A", "src": "https://rj-dubber.b-cdn.net/special-2/special-echoes-of-the-misty-cloud_part-2.mp4" }],
+        "rating": 4.9
       }
     ]
   }

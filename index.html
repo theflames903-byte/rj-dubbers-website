@@ -12,11 +12,16 @@
 <body>
 
     <header class="site-header">
-        <button class="hamburger" id="hamburger-button" aria-label="Toggle menu">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
+        <div class="header-left">
+            <button class="hamburger" id="hamburger-button" aria-label="Toggle menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <a href="#" class="back-button" id="player-back-button" aria-label="Go back to homepage">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414L7.828 11z" fill="currentColor"/></svg>
+            </a>
+        </div>
         <div class="logo-container">
             <h1 class="site-title">RJ Dubbers</h1>
         </div>
@@ -30,7 +35,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content">
         <!-- Hero Banner Section -->
         <section id="home">
             <div class="hero-content">
@@ -44,7 +49,7 @@
             <div class="seasons-container">
 
                 <!-- Season 1 Card -->
-                <article class="season-card" data-content-id="season_1">
+                <article class="season-card" data-content-type="season" data-content-id="1">
                     <div class="coming-soon-tag">Coming Soon</div>
                     <!-- IMPORTANT: Replace with your Season 1 poster file path -->
                     <img src="images/season-1-poster.jpg" alt="Season 1 Poster">
@@ -56,7 +61,7 @@
                 </article>
 
                 <!-- Season 2 Card -->
-                <article class="season-card" data-content-id="season_2">
+                <article class="season-card" data-content-type="season" data-content-id="2">
                     <div class="coming-soon-tag">Coming Soon</div>
                     <!-- IMPORTANT: Replace with your Season 2 poster file path -->
                     <img src="images/season-2-poster.jpg" alt="Season 2 Poster">
@@ -68,35 +73,47 @@
                 </article>
 
                 <!-- Season 3 Card -->
-                <article class="season-card" data-content-id="season_3">
+                <article class="season-card" data-content-type="season" data-content-id="3">
                     <!-- IMPORTANT: Replace with your Season 3 poster file path -->
                     <img src="images/season-3-poster.jpg" alt="Season 3 Poster">
                     <div class="season-card-content">
                         <h3>Season 3</h3>
+                        <div class="season-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/></svg>
+                            <span>4.7</span>
+                        </div>
                         <p>12 Episodes</p>
-                        <a href="player.html?season=3" target="_blank" class="watch-button">Watch Now</a>
+                        <a href="#" class="watch-button">Watch Now</a>
                     </div>
                 </article>
 
                 <!-- Season 4 Card -->
-                <article class="season-card" data-content-id="season_4">
+                <article class="season-card" data-content-type="season" data-content-id="4">
                     <!-- IMPORTANT: Replace with your Season 4 poster file path -->
                     <img src="images/season-4-poster.jpg" alt="Season 4 Poster">
                     <div class="season-card-content">
                         <h3>Season 4</h3>
+                        <div class="season-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/></svg>
+                            <span>4.8</span>
+                        </div>
                         <p>24 Episodes</p>
-                        <a href="player.html?season=4" target="_blank" class="watch-button">Watch Now</a>
+                        <a href="#" class="watch-button">Watch Now</a>
                     </div>
                 </article>
 
                 <!-- Season 5 Card -->
-                <article class="season-card" data-content-id="season_5">
+                <article class="season-card" data-content-type="season" data-content-id="5">
                     <!-- IMPORTANT: Replace with your Season 5 poster file path -->
                     <img src="images/season-5-poster.jpg" alt="Season 5 Poster">
                     <div class="season-card-content">
                         <h3>Season 5</h3>
+                        <div class="season-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/></svg>
+                            <span>4.9</span>
+                        </div>
                         <p>52 Episodes</p>
-                        <a href="player.html?season=5" rel="noopener noreferrer" target="_blank" class="watch-button">Watch Now</a>
+                        <a href="#" class="watch-button">Watch Now</a>
                     </div>
                 </article>
             </div>
@@ -107,24 +124,32 @@
             <h2 class="section-title">Special Movies</h2>
             <div class="seasons-container">
                 <!-- Movie 1 Card -->
-                <article class="season-card" data-content-id="special_1">
+                <article class="season-card" data-content-type="special" data-content-id="1">
                     <!-- IMPORTANT: Replace with your movie poster file path -->
                     <img src="images/special-1-poster.jpg" alt="Special Movie 1 Poster">
                     <div class="season-card-content">
                         <h3>Song of Desert</h3>
-                        <p>Movie</p>
-                        <a href="player.html?special=1" rel="noopener noreferrer" target="_blank" class="watch-button">Watch Now</a>
+                        <div class="season-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/></svg>
+                            <span>4.6</span>
+                        </div>
+                        <p>3 Episodes</p>
+                        <a href="#" class="watch-button">Watch Now</a>
                     </div>
                 </article>
 
                 <!-- Movie 2 Card -->
-                <article class="season-card" data-content-id="special_2">
+                <article class="season-card" data-content-type="special" data-content-id="2">
                     <!-- IMPORTANT: Replace with your movie poster file path -->
                     <img src="images/special-2-poster.jpg" alt="Special Movie 2 Poster">
                     <div class="season-card-content">
                         <h3>Yun Yun Special</h3>
-                        <p>Movie</p>
-                        <a href="player.html?special=2" rel="noopener noreferrer" target="_blank" class="watch-button">Watch Now</a>
+                        <div class="season-rating">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 18.26l-7.053 3.948 1.575-7.928L.587 8.792l8.027-.952L12 .5l3.386 7.34 8.027.952-5.935 5.488 1.575 7.928z"/></svg>
+                            <span>4.8</span>
+                        </div>
+                        <p>2 Episodes</p>
+                        <a href="#" class="watch-button">Watch Now</a>
                     </div>
                 </article>
             </div>
@@ -143,22 +168,22 @@
                 <!-- Actor 1 -->
                 <div class="actor-card">
                     <h4>Xiao Yan</h4>
-                    <p>Hindi Voice: Rohan Sharma</p>
+                    <p>Hindi Voice: RJ</p>
                 </div>
                 <!-- Actor 2 -->
                 <div class="actor-card">
                     <h4>Xiao Xun'er</h4>
-                    <p>Hindi Voice: Priya Singh</p>
+                    <p>Hindi Voice: Sweety</p>
                 </div>
                 <!-- Actor 3 -->
                 <div class="actor-card">
                     <h4>Yao Lao</h4>
-                    <p>Hindi Voice: Vikram Kumar</p>
+                    <p>Hindi Voice: Mikey mouse</p>
                 </div>
                 <!-- Actor 4 -->
                 <div class="actor-card">
                     <h4>Queen Medusa</h4>
-                    <p>Hindi Voice: Anjali Mehta</p>
+                    <p>Hindi Voice: Billy</p>
                 </div>
                 <!-- Add more actor cards as needed -->
             </div>
@@ -182,6 +207,40 @@
         <p>&copy; 2024 RJ Dubbers. All rights reserved. 'Battle Through the Heavens' is the property of its respective owners.</p>
     </footer>
 
+    <!-- Player Section (Initially Hidden) -->
+    <div id="player-container" class="player-container-main">
+        <main class="player-main">
+            <div class="player-layout">
+                <!-- Left Column: Details -->
+                <div class="player-details-column">
+                    <h2 id="player-title"></h2>
+                    <div class="player-global-rating"></div>
+                    <div class="season-details-wrapper">
+                        <p id="player-description"></p>
+                        <div class="player-vas"></div>
+                    </div>
+                </div>
+                <!-- Right Column: Episodes -->
+                <div class="player-episodes-column">
+                    <div class="episode-section">
+                        <h3 class="episodes-panel-title">Episodes</h3>
+                        <ul id="episode-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Download Modal (shared) -->
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal id="download-modal-close-button" aria-label="Close modal">&times;</button>
+            <h3 id="download-modal-title">Download Episode</h3>
+            <div id="download-options-list"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
     <script src="script.js"></script>
 </body>
 </html>
