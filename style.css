@@ -834,6 +834,19 @@ main#main-content, .player-container-main {
         padding: 15px;
     }
 
+    .player-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .player-header .site-title {
+        font-size: 1.2rem;
+    }
+
+    #episode-list li {
+        padding: 15px;
+    }
+
     .episode-info-wrapper {
         width: 100%;
         justify-content: space-between;

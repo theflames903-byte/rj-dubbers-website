@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastScrollY = window.scrollY;
 
     // --- Main Page Logic ---
-    if (siteHeader) {
+    if (siteHeader && hamburgerButton) { // Only run on main page
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
 
@@ -37,14 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     backToTopButton.classList.remove('visible');
                 }
             }
-        });
-    }
-
-    if (hamburgerButton && mainNav) {
+        }, { passive: true });
+        
         hamburgerButton.addEventListener('click', () => {
             mainNav.classList.toggle('nav-active');
             hamburgerButton.classList.toggle('is-active');
-        });
+        });    
     }
 
     // Close menu when a navigation link is clicked
