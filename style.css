@@ -65,7 +65,11 @@ section {
     padding: 25px 5%;
     background-color: transparent;
     z-index: 2000; /* Increased to be above the player container */
-    transition: background-color 0.3s ease, padding 0.3s ease;
+    transition: background-color 0.3s ease, padding 0.3s ease, transform 0.4s ease-in-out;
+}
+
+.site-header.header-hidden {
+    transform: translateY(-100%);
 }
 
 .header-left {
@@ -160,15 +164,14 @@ section {
     display: none; /* Hidden by default */
 }
 
-.player-active .hamburger {
-    display: none;
-}
-.player-active .back-button {
+.player-header .back-button {
     display: flex;
 }
+.player-header .hamburger {
+    display: none;
+}
 
-/* --- Main Content --- */
-main#main-content {
+main#main-content, .player-container-main {
     padding-top: 75px; /* Offset for fixed header */
 }
 
@@ -201,8 +204,9 @@ main#main-content {
 /* --- Seasons Section --- */
 .seasons-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
     gap: 2rem;
+    justify-content: center; /* Center the grid items if they don't fill the row */
 }
 
 .season-card {
@@ -358,6 +362,16 @@ main#main-content {
     width: 100%; /* Make the paragraph take full width to appear above the button */
     margin-bottom: 10px;
 }
+
+.email-link {
+    color: var(--primary-highlight);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
 /* --- Footer --- */
 .site-footer {
     background-color: var(--card-color);
@@ -368,6 +382,31 @@ main#main-content {
     color: var(--text-muted);
 }
 
+/* --- Back to Top Button --- */
+.back-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-highlight);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.back-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
 /* --- Player Container (SPA) --- */
 .player-container-main {
     position: fixed;
@@ -379,21 +418,16 @@ main#main-content {
     z-index: 1500;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
     overflow-y: auto;
 }
 
-.player-active .site-header {
-    /* Hide the main site header when the player/download page is active */
-    display: none;
-}
-
-.player-active .player-container-main {
+.player-container-main.active {
     opacity: 1;
     visibility: visible;
 }
 
 /* --- Player Page Styles --- */
+
 .player-main {
     padding: 40px 5%;
     max-width: 1200px;
@@ -772,6 +806,11 @@ main#main-content {
     .hero-title {
         font-size: 3.5rem;
     }
+
+    #home {
+        height: 55vh; /* Further reduce hero height on tablets */
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -783,6 +822,31 @@ main#main-content {
     }
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    #home {
+        height: 45vh; /* Further reduce hero height on phones */
+    }
+
+    #episode-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .episode-info-wrapper {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .episode-rating {
+        margin-left: 10px;
+    }
+
+    .episode-actions {
+        width: 100%;
+        margin-top: 10px;
     }
 }
 
@@ -799,26 +863,4 @@ main#main-content {
         position: sticky;
         top: 40px; /* Adjusted since the header is now hidden */
     }
-}
-
-.content-not-found .player-details-under-video {
-    text-align: center;
-    padding: 20px 0;
-    width: 100%; /* Take full width when other columns are hidden */
-}
-
-.content-not-found .player-details-under-video p {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-}
-
-.content-not-found .player-details-under-video p:last-of-type {
-    margin-bottom: 30px;
-}
-
-.content-not-found .player-video-wrapper,
-.content-not-found .player-info-panel,
-.content-not-found .player-global-rating,
-.content-not-found .player-vas {
-    display: none;
 }

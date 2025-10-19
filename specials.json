@@ -32,13 +32,13 @@
     ]
   },
   "2": {
-    "title": "Yun Yun Special",
+    "title": "Echoes of the Mist Cloud",
     "description": "A special movie detailing the story and relationship between Xiao Yan and Yun Yun, the leader of the Misty Cloud Sect.",
     "vas": "Xiao Yan:RJ,Yun Yun:Sweety",
     "globalRating": 4.8,
     "episodes": [
       {
-        "title": "Yun Yun Special - Part 1",
+        "title": "Echoes of the Mist Cloud - Part 1",
         "description": "Exploring the initial encounters and developing relationship between Xiao Yan and Yun Yun.",
         "src": "YOUR_BUNNY_VIDEO_GUID_4", 
         "libraryId": "1209873",
@@ -46,7 +46,7 @@
         "rating": 4.8
       },
       {
-        "title": "Yun Yun Special - Part 2",
+        "title": "Echoes of the Mist Cloud - Part 2",
         "description": "The relationship faces new challenges and heartfelt moments as their paths intertwine.",
         "src": "YOUR_BUNNY_VIDEO_GUID_5", 
         "libraryId": "1209873",

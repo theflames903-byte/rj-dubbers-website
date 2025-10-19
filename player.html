@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ Dubbers | Player</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header player-header">
+        <div class="header-left">
+            <a href="index.html" class="back-button" id="player-back-button" aria-label="Go back to homepage">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7.828 11H20v2H7.828l5.364 5.364-1.414 1.414L4 12l7.778-7.778 1.414 1.414L7.828 11z" fill="currentColor"/></svg>
+            </a>
+        </div>
+        <div class="logo-container">
+            <h1 class="site-title">RJ Dubbers</h1>
+        </div>
+        <nav class="main-nav" style="display: none;"></nav>
+    </header>
+
+    <!-- Player Section -->
+    <div id="player-container" class="player-container-main active">
+        <main class="player-main">
+            <!-- Loading Spinner -->
+            <div class="loading-spinner-overlay" id="player-loader">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="player-layout">
+                <!-- Left Column: Details -->
+                <div class="player-details-column">
+                    <h2 id="player-title">Loading...</h2>
+                    <div class="player-global-rating"></div>
+                    <div class="season-details-wrapper">
+                        <p id="player-description"></p>
+                        <div class="player-vas"></div>
+                    </div>
+                </div>
+                <!-- Right Column: Episodes -->
+                <div class="player-episodes-column">
+                    <div class="episode-section">
+                        <h3 class="episodes-panel-title">Episodes</h3>
+                        <ul id="episode-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Download Modal (shared) -->
+    <div id="download-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" data-close-modal id="download-modal-close-button" aria-label="Close modal">&times;</button>
+            <h3 id="download-modal-title">Download Episode</h3>
+            <div id="download-options-list"></div>
+        </div>
+    </div>
+
+    <script src="player.js"></script>
+</body>
+</html>
