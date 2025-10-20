@@ -760,6 +760,26 @@ main#main-content, .player-container-main {
     .main-nav li { margin: 20px 0; margin-left: 0; }
 
 
+    /* --- Player Layout for Tablets and Phones --- */
+    /* This ensures a consistent single-column layout for all screens below 992px */
+    .player-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Reorder player page content for a better mobile/tablet experience */
+    .player-details-column {
+        display: flex;
+        flex-direction: column;
+    }
+    .season-details-wrapper {
+        order: 1; /* Description */
+    }
+    .player-episodes-column {
+        order: 2; /* Episode List */
+        margin-top: 30px; /* Add space above the episode list */
+    }
+    .player-vas { order: 3; } /* Voice Actors */
 }
 @media (max-width: 768px) {
     section {
@@ -792,20 +812,19 @@ main#main-content, .player-container-main {
         font-size: 1.2rem;
     }
     .player-main {
-        padding: 20px 5%;
+        padding: 20px 15px;
     }
     .hero-title {
         font-size: 2.5rem;
         padding: 15px;
     }
 
-    .player-layout {
-        display: flex;
-        flex-direction: column;
-    }
-
     .player-header .site-title {
         font-size: 1.2rem;
+    }
+
+    #episode-list li {
+        flex-wrap: wrap; /* Allow items to wrap to the next line */
     }
 
     .episode-info-wrapper {
@@ -814,13 +833,8 @@ main#main-content, .player-container-main {
         margin-bottom: 10px;
     }
 
-    .episode-rating {
-        margin-left: 10px;
-    }
-
     .episode-actions {
         width: 100%;
-        margin-top: 10px;
         margin-left: 0; /* Reset margin from desktop view */
     }
 
@@ -828,19 +842,9 @@ main#main-content, .player-container-main {
         width: 100%; /* Make button full-width */
     }
 
-    /* Reorder player page content for a better mobile experience */
-    .player-details-column {
-        display: flex;
-        flex-direction: column;
+    .episode-rating {
+        display: none; /* Hide rating on smallest screens to save space */
     }
-    .season-details-wrapper {
-        order: 1; /* Description */
-    }
-    .player-episodes-column {
-        order: 2; /* Episode List */
-        margin-top: 30px; /* Add space above the episode list */
-    }
-    .player-vas { order: 3; } /* Voice Actors */
 }
 
 /* Two-column layout for player on larger screens */
