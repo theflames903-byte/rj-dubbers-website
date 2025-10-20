@@ -408,22 +408,11 @@ main#main-content, .player-container-main {
     transform: translateY(0);
 }
 /* --- Player Container (SPA) --- */
+/* This container holds the main content for the player page. */
 .player-container-main {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background-color: var(--bg-color);
-    z-index: 1500;
-    opacity: 0;
-    visibility: hidden;
     overflow-y: auto;
-}
-
-.player-container-main.active {
-    opacity: 1;
-    visibility: visible;
+    /* The 'active' class and opacity/visibility properties were removed as they are not needed for a standalone page and were causing the content to be hidden. */
 }
 
 /* --- Player Page Styles --- */
@@ -838,12 +827,20 @@ main#main-content, .player-container-main {
     .episode-actions .watch-button {
         width: 100%; /* Make button full-width */
     }
-}
-@media (max-width: 480px) {
-    #episode-list li {
+
+    /* Reorder player page content for a better mobile experience */
+    .player-details-column {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
     }
+    .season-details-wrapper {
+        order: 1; /* Description */
+    }
+    .player-episodes-column {
+        order: 2; /* Episode List */
+        margin-top: 30px; /* Add space above the episode list */
+    }
+    .player-vas { order: 3; } /* Voice Actors */
 }
 
 /* Two-column layout for player on larger screens */

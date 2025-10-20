@@ -16,10 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Data Fetching ---
     async function fetchSpecialsData() {
         try {
-            const specialsResult = await fetch('specials.json').catch(e => ({ ok: false, error: e }));
-            const specialsJson = specialsResult.ok ? await specialsResult.json().catch(() => null) : null;
-            if (!specialsJson) console.warn('Failed to fetch or parse specials.json');
-            return { specialsData: specialsJson, error: null };
+            const response = await fetch('specials.json');
+            if (!response.ok) {
+                throw new Error(`Failed to fetch specials.json: ${response.statusText}`);
+            }
+            return { specialsData: await response.json(), error: null };
         } catch (error) {
             console.error("Critical error fetching specials data:", error);
             return { specialsData: null, error };
@@ -32,7 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await fetch(fileName);
-            if (!response.ok) throw new Error(`Failed to fetch ${fileName}: ${response.statusText}`);
+            if (!response.ok) {
+                // Throw an error to be caught by the calling function's catch block
+                throw new Error(`Failed to fetch ${fileName}: ${response.statusText}`);
+            }
             return await response.json();
         } catch (error) {
             console.error(`Error fetching data for ${contentType} ${contentId}:`, error);
@@ -269,24 +273,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const loader = document.getElementById('player-loader');
         loader.classList.remove('hidden');
 
-        let contentData;
+        try {
+            let contentData;
 
-        if (isSpecial) {
-            if (!specialsData) {
-                const data = await fetchSpecialsData();
-                if (data.error || !data.specialsData) {
-                    handleContentNotFound('Specials could not be loaded. Please try again later.');
-                    return;
+            if (isSpecial) {
+                if (!specialsData) {
+                    const data = await fetchSpecialsData();
+                    if (data.error || !data.specialsData) {
+                        throw new Error('Specials data could not be loaded.');
+                    }
+                    specialsData = data.specialsData;
                 }
-                specialsData = data.specialsData;
+                // Correctly access the special data from the object using the ID as a key.
+                contentData = specialsData ? specialsData[contentId] : null;
+                if (contentData) {
+                    contentData.id = contentId; // Ensure the ID is part of the object
+                }
+            } else {
+                contentData = await fetchContentData(contentType, contentId);
             }
-            contentData = specialsData?.find(s => s.id == contentId);
-        } else {
-            contentData = await fetchContentData(contentType, contentId);
-        }
 
-        if (!contentData) {
-            handleContentNotFound(`The requested content (ID: ${contentId}) was not found.`);
+            if (!contentData) throw new Error(`Content (ID: ${contentId}) not found in data files.`);
+
+            currentContent = { id: contentId, isSpecial: isSpecial, data: contentData };
+            updateUI();
+        } catch (error) {
+            handleContentNotFound(`The requested content (ID: ${contentId}) was not found. ${error.message}`);
             return;
         }
 
